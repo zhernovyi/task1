@@ -16,12 +16,13 @@ public class Main {
 
         List<String> wrongAnswers = new ArrayList<String>();
         List<String> listOfExamples = new ArrayList<String>();
+
         for (temporaryCounter = 1; temporaryCounter <= countTrying; temporaryCounter++) {
             int num1 = getNum();
             int num2 = getNum();
             System.out.print(num1 + " * " + num2 + " = ");
             int rightResult = num1 * num2;
-            int yourResult = 1;//scanner.nextInt();
+            int yourResult = scanner.nextInt();
             String doneExample = main.toString(num1, num2, rightResult, yourResult);
             if (yourResult == rightResult) {
                 System.out.print((char) 27 + "[32mRight");
@@ -45,11 +46,11 @@ public class Main {
                         break;
                     } else if (askingForQuit.equals("0")) {
                         if (negativeCounter > 0) {
+                            System.out.println((char) 27 + "[0mWork again with these examples");
                             main.workAgainWith(wrongAnswers);
-                            System.out.println("----------------");
-                            main.workAgainWith(listOfExamples);
-
                         }
+                        System.out.println("----------------");
+                        main.workAgainWith(listOfExamples);
                         break;
                     } else {
                         System.out.println("You've entered wrong number. Try again");
@@ -64,18 +65,21 @@ public class Main {
     }
 
     private static int getNum() {
-        return (int) (Math.random() * 2 + 1);
+        return (int) (Math.random() * 6 + 4);
     }
 
     public void workAgainWith(List<String> array) {
-        System.out.println((char) 27 + "[0mWork again with these examples");
         for (String s : array) {
             System.out.println(s);
         }
     }
 
     public String toString(int num1, int num2, int rightResult, int yourResult) {
-        return num1 + " * " + num2 + " = " + rightResult + (char) 27 + "[36m (" + yourResult + ")" + (char) 27 + "[0m";
+        if (yourResult == rightResult){
+            return num1 + " * " + num2 + " = " + rightResult + (char) 27 + "[36m (" + yourResult + ")" + (char) 27 + "[0m";
+        } else {
+            return num1 + " * " + num2 + " = " + rightResult + (char) 27 + "[31m (" + yourResult + ")" + (char) 27 + "[0m";
+        }
     }
 
 }
