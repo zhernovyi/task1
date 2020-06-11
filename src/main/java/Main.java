@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 //        System.out.print((char)27+"[30m");
+        //new info;
         Scanner sc = new Scanner(System.in);
         int positiveTrying = 33;
         int negativeTrying = 5;
@@ -38,14 +39,11 @@ public class Main {
             }
             if (n == negativeTrying) {
                 System.out.print((char) 27 + "[31m ти програв!!");
-                if (n > 0) {
-                    System.out.println((char) 27 + "[0m\nПопрацюй з цими прикладами");
-                    for (String s : wrongAnswers) {
-                        System.out.println(s);
-                    }
+                System.out.println((char) 27 + "[0m\nПопрацюй з цими прикладами");
+                for (String s : wrongAnswers) {
+                    System.out.println(s);
                 }
             }
-
         }
     }
 }
