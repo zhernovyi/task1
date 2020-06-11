@@ -42,7 +42,6 @@ public class Main {
                     break;
                 } else {
                     System.out.println("You've entered wrong number. Try again");
-                    continue;
                 }
             } if (askingForQuit.equals("0")){
                 break;
