@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 //        System.out.print((char)27+"[30m");
-        //new info;
         Scanner sc = new Scanner(System.in);
         int positiveTrying = 5;
         int negativeTrying = 3;
