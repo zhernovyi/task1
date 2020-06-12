@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,7 +11,7 @@ public class Main {
         int sizeArray = 5;
         int sizeItemsOfArray = 3;
 
-        Integer [][] listOfExamples = new Integer[sizeArray][sizeItemsOfArray];
+        Integer[][] listOfExamples = new Integer[sizeArray][sizeItemsOfArray];
 
         List<String> listOfArrays = new ArrayList<String>();
 
@@ -22,11 +21,10 @@ public class Main {
                 int num1 = main.getNum();
                 int num2 = main.getNum();
                 int rightResult = main.multiplication(num1, num2);
-                listOfExamples[temporaryArrayCounter][0]= num1;
-                listOfExamples[temporaryArrayCounter][1]= num2;
-                listOfExamples[temporaryArrayCounter][2]= rightResult;
+                listOfExamples[temporaryArrayCounter][0] = num1;
+                listOfExamples[temporaryArrayCounter][1] = num2;
+                listOfExamples[temporaryArrayCounter][2] = rightResult;
             }
-
 
             int num1 = listOfExamples[temporaryCounter][0];
             int num2 = listOfExamples[temporaryCounter][1];
@@ -47,7 +45,7 @@ public class Main {
             System.out.println("\n" + (char) 27 + "[36m" + positiveCounter + "/" + (char) 27 + "[31m" + negativeCounter);
             System.out.println((char) 27 + "[0m");
 
-            if (temporaryCounter >= sizeArray-1) {
+            if (temporaryCounter >= sizeArray - 1) {
                 System.out.print("Do you wanna continue?(1 - yes/ 0 - no): ");
                 String askingForQuit = scanner.next();
 
@@ -86,10 +84,10 @@ public class Main {
     }
 
     public String formatEquatione(int num1, int num2, int rightResult, int yourResult) {
-        if (yourResult == rightResult){
-            return "\n"+num1 + " * " + num2 + " = " + rightResult + (char) 27 + "[0m";
+        if (yourResult == rightResult) {
+            return "\n" + num1 + " * " + num2 + " = " + rightResult + (char) 27 + "[0m";
         } else {
-            return "\n"+num1 + " * " + num2 + " = " + rightResult + (char) 27 + "[31m (" + yourResult + ")" + (char) 27 + "[0m";
+            return "\n" + num1 + " * " + num2 + " = " + rightResult + (char) 27 + "[31m (" + yourResult + ")" + (char) 27 + "[0m";
         }
     }
 
