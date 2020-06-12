@@ -20,7 +20,6 @@ public class ReadingTextFile {
                     int i = Integer.parseInt(tempStr);
                     arrayOfExamples[counterExamples][counterNumbers] = i;
                     counterNumbers++;
-
                 }
                 if (c == enter) {
                     counterExamples++;
@@ -34,7 +33,7 @@ public class ReadingTextFile {
         }
         return arrayOfExamples;
     }
-    //-----trying create array with string data inside-----//
+    //-----trying create array with String items inside-----//
 /*    private static void testString(int countExamples, int counter, String tempStr, String[] arrayOfExamples, FileReader reader) throws IOException {
         int c;
         int space = 32;
