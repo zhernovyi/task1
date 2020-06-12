@@ -15,8 +15,8 @@ public class Main {
 
         List<String> listOfArrays = new ArrayList<String>();
 
-        for (int temporaryCounter = 0; temporaryCounter < sizeArray; temporaryCounter++) {
-
+//        for (int temporaryCounter = 0; temporaryCounter < sizeArray; temporaryCounter++) {
+        while (true) {
             for (int temporaryArrayCounter = 0; temporaryArrayCounter < sizeArray; temporaryArrayCounter++) {
                 int num1 = main.getNum();
                 int num2 = main.getNum();
@@ -26,47 +26,46 @@ public class Main {
                 listOfExamples[temporaryArrayCounter][2] = rightResult;
             }
 
-            int num1 = listOfExamples[temporaryCounter][0];
-            int num2 = listOfExamples[temporaryCounter][1];
-            int rightResult = listOfExamples[temporaryCounter][2];
-            System.out.print(num1 + " * " + num2 + " = ");
+            for (Integer[] temp : listOfExamples) {
+                int num1 = temp[0];
+                int num2 = temp[1];
+                int rightResult = temp[2];
+                System.out.print(num1 + " * " + num2 + " = ");
 
-            int yourResult = scanner.nextInt();
-            String doneExample = main.formatEquatione(num1, num2, rightResult, yourResult);
-            listOfArrays.add(doneExample);
+                int yourResult = scanner.nextInt();
+                String doneExample = main.formatEquatione(num1, num2, rightResult, yourResult);
+                listOfArrays.add(doneExample);
 
-            if (yourResult == rightResult) {
-                System.out.print((char) 27 + "[32mRight");
-                positiveCounter++;
-            } else {
-                System.out.print((char) 27 + "[31mWrong" + (char) 27 + "[32m (" + rightResult + ")");
-                negativeCounter++;
+                if (yourResult == rightResult) {
+                    System.out.print((char) 27 + "[32mRight");
+                    positiveCounter++;
+                } else {
+                    System.out.print((char) 27 + "[31mWrong" + (char) 27 + "[32m (" + rightResult + ")");
+                    negativeCounter++;
+                }
+                System.out.println("\n" + (char) 27 + "[36m" + positiveCounter + "/" + (char) 27 + "[31m" + negativeCounter);
+                System.out.println((char) 27 + "[0m");
             }
-            System.out.println("\n" + (char) 27 + "[36m" + positiveCounter + "/" + (char) 27 + "[31m" + negativeCounter);
-            System.out.println((char) 27 + "[0m");
 
-            if (temporaryCounter >= sizeArray - 1) {
-                System.out.print("Do you wanna continue?(1 - yes/ 0 - no): ");
-                String askingForQuit = scanner.next();
+            System.out.print("Do you wanna continue?(1 - yes/ 0 - no): ");
+            String askingForQuit = scanner.next();
 
-                while (true) {
-                    if (askingForQuit.equals("1")) {
-                        temporaryCounter = -1;
-                        System.out.println("play again");
-                        break;
-                    } else if (askingForQuit.equals("0")) {
-                        System.out.println("game over");
-                        break;
-                    } else {
-                        System.out.println("You've entered wrong number. Try again");
-                        askingForQuit = scanner.next();
-                    }
+            while (true) {
+                if (askingForQuit.equals("1")) {
+                    System.out.println("play again");
+                    break;
+                } else if (askingForQuit.equals("0")) {
+                    System.out.println("game over");
+                    System.out.println("Your result:" + (char) 27 + "[36m" + positiveCounter + "/" + (char) 27 + "[31m" + negativeCounter + (char) 27 + "[0m");
+                    main.workAgainWith(listOfArrays);
+
+                    System.exit(0);
+                } else {
+                    System.out.println("You've entered wrong number. Try again");
+                    askingForQuit = scanner.next();
                 }
             }
         }
-
-        System.out.println("Your result:" + (char) 27 + "[36m" + positiveCounter + "/" + (char) 27 + "[31m" + negativeCounter + (char) 27 + "[0m");
-        main.workAgainWith(listOfArrays);
     }
 
     private int multiplication(int num1, int num2) {
