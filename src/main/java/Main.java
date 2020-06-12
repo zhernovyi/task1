@@ -16,6 +16,7 @@ public class Main {
         Integer[][] listOfExamples;
         List<String> listOfArrays = new ArrayList<>();
 
+            //-----realization with generation math examples by hand with help Scanner-----//
 //        for (int temporaryCounter = 0; temporaryCounter < sizeArray; temporaryCounter++) {
 //            for (int temporaryArrayCounter = 0; temporaryArrayCounter < sizeArray; temporaryArrayCounter++) {
 //                int num1 = main.getNum();
