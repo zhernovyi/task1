@@ -1,30 +1,33 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Main main = new Main();
+        ReadingTextFile readingTextFile = new ReadingTextFile();
         Scanner scanner = new Scanner(System.in);
         int positiveCounter = 0;
         int negativeCounter = 0;
         int sizeArray = 5;
         int sizeItemsOfArray = 3;
 
-        Integer[][] listOfExamples = new Integer[sizeArray][sizeItemsOfArray];
-
-        List<String> listOfArrays = new ArrayList<String>();
+        Integer[][] listOfExamples;
+        List<String> listOfArrays = new ArrayList<>();
 
 //        for (int temporaryCounter = 0; temporaryCounter < sizeArray; temporaryCounter++) {
+//            for (int temporaryArrayCounter = 0; temporaryArrayCounter < sizeArray; temporaryArrayCounter++) {
+//                int num1 = main.getNum();
+//                int num2 = main.getNum();
+//                int rightResult = main.multiplication(num1, num2);
+//                listOfExamples[temporaryArrayCounter][0] = num1;
+//                listOfExamples[temporaryArrayCounter][1] = num2;
+//                listOfExamples[temporaryArrayCounter][2] = rightResult;
+//            }
+
         while (true) {
-            for (int temporaryArrayCounter = 0; temporaryArrayCounter < sizeArray; temporaryArrayCounter++) {
-                int num1 = main.getNum();
-                int num2 = main.getNum();
-                int rightResult = main.multiplication(num1, num2);
-                listOfExamples[temporaryArrayCounter][0] = num1;
-                listOfExamples[temporaryArrayCounter][1] = num2;
-                listOfExamples[temporaryArrayCounter][2] = rightResult;
-            }
+            listOfExamples = readingTextFile.arrayFromFile();
 
             for (Integer[] temp : listOfExamples) {
                 int num1 = temp[0];
