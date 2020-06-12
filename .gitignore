@@ -26,4 +26,6 @@ hs_err_pid*
 .idea/
 *.xml
 .idea/workspace.xml
-
+target/
+task1.iml
+.DS_Store
