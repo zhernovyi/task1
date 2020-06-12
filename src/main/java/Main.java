@@ -34,7 +34,7 @@ public class Main {
             System.out.print(num1 + " * " + num2 + " = ");
 
             int yourResult = scanner.nextInt();
-            String doneExample = main.toString(num1, num2, rightResult, yourResult);
+            String doneExample = main.formatEquatione(num1, num2, rightResult, yourResult);
             listOfArrays.add(doneExample);
 
             if (yourResult == rightResult) {
@@ -45,7 +45,7 @@ public class Main {
                 negativeCounter++;
             }
             System.out.println("\n" + (char) 27 + "[36m" + positiveCounter + "/" + (char) 27 + "[31m" + negativeCounter);
-            System.out.println((char) 27 + "[39m");
+            System.out.println((char) 27 + "[0m");
 
             if (temporaryCounter >= sizeArray-1) {
                 System.out.print("Do you wanna continue?(1 - yes/ 0 - no): ");
@@ -68,7 +68,7 @@ public class Main {
         }
 
         System.out.println("Your result:" + (char) 27 + "[36m" + positiveCounter + "/" + (char) 27 + "[31m" + negativeCounter + (char) 27 + "[0m");
-        System.out.println(listOfArrays);
+        main.workAgainWith(listOfArrays);
     }
 
     private int multiplication(int num1, int num2) {
@@ -81,11 +81,11 @@ public class Main {
 
     public void workAgainWith(List<String> array) {
         for (String s : array) {
-            System.out.println(s);
+            System.out.print(s);
         }
     }
 
-    public String toString(int num1, int num2, int rightResult, int yourResult) {
+    public String formatEquatione(int num1, int num2, int rightResult, int yourResult) {
         if (yourResult == rightResult){
             return "\n"+num1 + " * " + num2 + " = " + rightResult + (char) 27 + "[0m";
         } else {
