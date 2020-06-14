@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,7 +14,7 @@ public class Main {
         int sizeArray = 5;
         int sizeItemsOfArray = 3;
 
-        Integer[][] listOfExamples;
+        Integer[][] listOfExamples = new Integer[0][];
         List<String> listOfArrays = new ArrayList<>();
 
             //-----realization with generation math examples by hand with help Scanner-----//
@@ -28,7 +29,8 @@ public class Main {
 //            }
 
         while (true) {
-            listOfExamples = readingTextFile.arrayFromFile();
+            listOfExamples = readingTextFile.arrayInteger();
+
 
             for (Integer[] temp : listOfExamples) {
                 int num1 = temp[0];
