@@ -1,9 +1,24 @@
+import sun.util.calendar.BaseCalendar;
+
+import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    public void setTempScannerCommand(String tempScannerCommand) {
+        this.tempScannerCommand = tempScannerCommand;
+    }
+
+    public String getTempScannerCommand() {
+        return tempScannerCommand;
+    }
+
+    private static String tempScannerCommand;
+
     public static void main(String[] args) throws IOException {
         Main main = new Main();
         ReadingTextFile readingTextFile = new ReadingTextFile();
@@ -17,7 +32,8 @@ public class Main {
         List<String> listOfArrays = new ArrayList<>();
 
         System.out.println("Choose a mode of learning mult examples: 1 - random, 2 - from file, 0 - exit");
-        String tempScannerCommand = scanner.next();
+        main.setTempScannerCommand(scanner.next());
+        String tempScannerCommand = main.getTempScannerCommand();
         //-----realization with generation math examples by hand with help Scanner-----//
         for (int temporaryCounter = 0; temporaryCounter < sizeArray; temporaryCounter++) {
             while (true) {
@@ -28,7 +44,11 @@ public class Main {
                     listOfExamples = readingTextFile.arrayInteger();//examples from a file
                     break;
                 } else if (tempScannerCommand.equals("0")) {
-                    System.out.println("Not started");
+                    String loserStr = "Loser";
+                    listOfArrays.add(loserStr);
+                    System.out.println(loserStr);
+                    main.createResultFile(listOfArrays);
+
                     System.exit(0);
                 } else {
                     System.out.println("You've entered wrong number. Try again");
@@ -69,11 +89,17 @@ public class Main {
                         System.out.println("play again");
                         break;
                     } else if (askingForQuit.equals("0")) {
-                        System.out.println("game over");
-                        System.out.println("Your result:" + (char) 27 + "[36m" + positiveCounter + "/" + (char) 27 + "[31m" + negativeCounter + (char) 27 + "[0m");
-                        main.workAgainWith(listOfArrays);
+//                        System.out.println("game over");
+//                        System.out.println("Your result:" + (char) 27 + "[36m" + positiveCounter + "/" + (char) 27 + "[31m" + negativeCounter + (char) 27 + "[0m");
+//                        main.workAgainWith(listOfArrays);
+                        System.out.println("Your result: " + positiveCounter + "/"+ negativeCounter);
 
-                        System.exit(0);
+                        if (tempScannerCommand.equals("1")){
+                            main.workAgainWith(listOfArrays);
+                        } else if (tempScannerCommand.equals("2")){
+                            main.createResultFile(listOfArrays);
+                        }
+                            System.exit(0);
                     } else {
                         System.out.println("You've entered wrong number. Try again");
                         askingForQuit = scanner.next();
@@ -81,6 +107,25 @@ public class Main {
                 }
                 break;
             }
+        }
+    }
+
+    public void createResultFile(List<String> listOfArrays) {
+        try (FileWriter fileWriter = new FileWriter("/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/results.txt", false)){
+            Main main = new Main();
+            String tempScannerCommand = main.getTempScannerCommand();
+            if (tempScannerCommand.equals("0")){
+                fileWriter.write(String.valueOf(listOfArrays));
+            } else {
+                fileWriter.write(newArr(listOfArrays));
+            }
+            fileWriter.write('\n');
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            fileWriter.write(dtf.format(now));
+            fileWriter.write("\n---------------------\n");
+        }catch (IOException e){
+            System.out.println(e.getMessage());
         }
     }
 
@@ -111,11 +156,19 @@ public class Main {
         }
     }
 
+    public String newArr(List<String> array) {
+        String newArrCollection ="";
+        for (String s : array) {
+            newArrCollection += s;
+        }
+        return newArrCollection;
+    }
+
     public String formatEquatione(int num1, int num2, int rightResult, int yourResult) {
         if (yourResult == rightResult) {
-            return "\n" + num1 + " * " + num2 + " = " + rightResult + (char) 27 + "[0m";
+            return "\n" + num1 + " * " + num2 + " = " + rightResult;
         } else {
-            return "\n" + num1 + " * " + num2 + " = " + rightResult + (char) 27 + "[31m (" + yourResult + ")" + (char) 27 + "[0m";
+            return "\n" + num1 + " * " + num2 + " = " + rightResult + " (" + yourResult + ")";
         }
     }
 
