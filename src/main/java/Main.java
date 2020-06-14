@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -21,14 +20,14 @@ public class Main {
         String tempScannerCommand = scanner.next();
         //-----realization with generation math examples by hand with help Scanner-----//
         for (int temporaryCounter = 0; temporaryCounter < sizeArray; temporaryCounter++) {
-            while(true){
-                if (tempScannerCommand.equals("1")){
+            while (true) {
+                if (tempScannerCommand.equals("1")) {
                     listOfExamples = main.autoGeneratorByRandom(sizeArray, listOfExamples);
                     break;
-                } else if (tempScannerCommand.equals("2")){
+                } else if (tempScannerCommand.equals("2")) {
                     listOfExamples = readingTextFile.arrayInteger();//examples from a file
                     break;
-                } else if (tempScannerCommand.equals("0")){
+                } else if (tempScannerCommand.equals("0")) {
                     System.out.println("Not started");
                     System.exit(0);
                 } else {
@@ -36,7 +35,6 @@ public class Main {
                     tempScannerCommand = scanner.next();
                 }
             }
-
 
 
             while (true) {
