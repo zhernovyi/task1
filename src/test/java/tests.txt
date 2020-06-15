@@ -25,4 +25,10 @@
 
     Expected result:
     There shouldn't be printed result into console
-    There should updated 'results.txt' file
+    There should be updated 'results.txt' file
+
+4)
+    1. Choose a don't play mode (0)
+
+    Expected result:
+    There should be printed word into console and saved in a file
