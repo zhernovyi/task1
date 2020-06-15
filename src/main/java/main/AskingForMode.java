@@ -6,12 +6,13 @@ import generationExamples.ExamplesFromRandomGenerationImpl;
 import generationExamples.ExitBeforeStartedExample;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class AskingForMode extends Main {
-    protected static EquationPattern chosenGenMode() {
-        Main main = new Main();
+    protected static EquationPattern askingForMode() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Choose a mode of learning mult examples: 1 - random, 2 - from file, 0 - exit");
-        String chooseModeByUser = main.setTempScannerCommand();
+        String chooseModeByUser = scanner.next();
         Integer[][] listOfExamples = null;
         while (true) {
             if (chooseModeByUser.equals("1")) {
@@ -22,15 +23,22 @@ public class AskingForMode extends Main {
                 return new ExitBeforeStartedExample();
             } else {
                 System.out.println("You've entered the wrong command. Try again: ");
-                chooseModeByUser = main.setTempScannerCommand();
+                chooseModeByUser = scanner.next();
+
             }
         }
     }
 
     protected Integer[][] askForQuit(List<String> listOfDoneExamples) {
-        System.out.print("Do you wanna continue?(1 - yes/ 0 - no): ");
-        Main main = new Main();
-        String tempAskForQuitCommand = main.setTempScannerCommand();
+        String tempAskForQuitCommand = "";
+        if (listOfDoneExamples!=null){
+            System.out.print("Do you wanna continue?(1 - yes/ 0 - no): ");
+            Scanner scanner = new Scanner(System.in);
+            tempAskForQuitCommand = scanner.next();
+        } else {
+            tempAskForQuitCommand = "0";
+        }
+
 
         while (true) {
             if (tempAskForQuitCommand.equals("1")) {
