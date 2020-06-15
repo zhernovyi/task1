@@ -1,9 +1,9 @@
 package main;
 
-import workingWithFileImpl.EquationPattern;
-import workingWithFileImpl.ExamplesFromFileGenerationImpl;
-import workingWithFileImpl.ExamplesFromRandomGenerationImpl;
-import workingWithFileImpl.ExitBeforeStartedExample;
+import generationExamples.EquationPattern;
+import generationExamples.ExamplesFromFileGenerationImpl;
+import generationExamples.ExamplesFromRandomGenerationImpl;
+import generationExamples.ExitBeforeStartedExample;
 
 import java.util.List;
 

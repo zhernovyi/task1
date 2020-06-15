@@ -1,6 +1,4 @@
-package workingWithFileImpl;
-
-import main.Main;
+package generationExamples;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,8 +10,8 @@ import java.util.List;
 
 public class ExamplesFromFileGenerationImpl implements EquationPattern {
     BufferedReader reader;
-    String pathToOpenFile = "/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/equations.txt";
-    String pathToSaveFile = "/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/results.txt";
+    String pathToOpenFile = "/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/files/equations.txt";
+    String pathToSaveFile = "/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/files/results.txt";
 
 
     @Override

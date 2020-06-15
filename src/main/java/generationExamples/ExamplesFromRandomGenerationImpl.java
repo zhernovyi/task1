@@ -1,4 +1,4 @@
-package workingWithFileImpl;
+package generationExamples;
 
 import java.util.List;
 import main.Main;

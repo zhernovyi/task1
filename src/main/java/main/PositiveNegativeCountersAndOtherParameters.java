@@ -1,12 +1,12 @@
 package main;
 
-import workingWithFileImpl.EquationPattern;
+import generationExamples.EquationPattern;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class PositiveNegativeCounters {
+public class PositiveNegativeCountersAndOtherParameters {
     public static int getPositiveCounter() {
         return positiveCounter;
     }

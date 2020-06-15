@@ -2,7 +2,7 @@ package main;
 
 import java.util.List;
 
-public class Main extends PositiveNegativeCounters {
+public class Main extends PositiveNegativeCountersAndOtherParameters {
     public static boolean varKeyOfStart = true; //this variable can help understand the system, where the program is started
 
     public static void main(String[] args) {
