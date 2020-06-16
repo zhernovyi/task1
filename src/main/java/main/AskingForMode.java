@@ -13,8 +13,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AskingForMode {
-    public static boolean varKeyOfStart = true; //this variable can help understand the system, where the program is started
-    static String chooseModeByUser = "";
+    private static String chooseModeByUser = "";
+    public static void setChooseModeByUser(String chooseModeByUser) {
+        AskingForMode.chooseModeByUser = chooseModeByUser;
+    }
+    public static String getChooseModeByUser() {
+        return chooseModeByUser;
+    }
+
     private final static String START_OF_PROGRAM = "Choose a mode of learning mult examples: 1 - random, 2 - from file, 0 - exit";
     private final static String FIRST_POSITION = "1";
     private final static String SECOND_POSITION = "2";
@@ -23,26 +29,26 @@ public class AskingForMode {
     private final static String CHOOSE_AN_ACTION = "Choose an action of examples: 1 - mult, 2 - div";
     private final static String TRY_MORE = "Do you wanna continue?(1 - yes/ 0 - no): ";
 
-    protected static EquationPattern askingForMode() {
+    protected EquationPattern askingForMode() {
         Scanner scanner = new Scanner(System.in);
         System.out.println(START_OF_PROGRAM);
-        chooseModeByUser = scanner.next();
+        setChooseModeByUser(scanner.next());
         while (true) {
-            if (chooseModeByUser.equals(FIRST_POSITION)) {
+            if (getChooseModeByUser().equals(FIRST_POSITION)) {
                 return new ExamplesFromRandomGenerationImpl();
-            } else if (chooseModeByUser.equals(SECOND_POSITION)) {
+            } else if (getChooseModeByUser().equals(SECOND_POSITION)) {
                 return new ExamplesFromFileGenerationImpl();
-            } else if (chooseModeByUser.equals(ZERO_POSITION)) {
+            } else if (getChooseModeByUser().equals(ZERO_POSITION)) {
                 return new ExitBeforeStartedExample();
             } else {
                 System.out.println(WRONG_VALUE);
-                chooseModeByUser = scanner.next();
+                setChooseModeByUser(scanner.next());
             }
         }
     }
 
-    protected static BasicAction askingForAction() {
-        if (chooseModeByUser.equals(ZERO_POSITION)) {
+    protected BasicAction askingForAction() {
+        if (getChooseModeByUser().equals(ZERO_POSITION)) {
             return new ExitBeforeChoosingAction();
         } else {
             Scanner scanner = new Scanner(System.in);
@@ -61,25 +67,27 @@ public class AskingForMode {
         }
     }
 
-    protected static Integer[][] askForQuit(List<String> listOfDoneExamples) {
+    protected Integer[][] askForQuit(List<String> listOfDoneExamples) {
+        Scanner scanner = new Scanner(System.in);
         String tempAskForQuitCommand = "";
         if (listOfDoneExamples != null) {
             System.out.print(TRY_MORE);
-            Scanner scanner = new Scanner(System.in);
             tempAskForQuitCommand = scanner.next();
         } else {
             tempAskForQuitCommand = ZERO_POSITION;
         }
 
         while (true) {
+            Main main = new Main();
             if (tempAskForQuitCommand.equals(FIRST_POSITION)) {
-                varKeyOfStart = false;
-                return Main.equationPattern.generationExamples();
+                return main.getEquationPattern().generationExamples();
             } else if (tempAskForQuitCommand.equals(ZERO_POSITION)) {
-                Main.equationPattern.saveExamples(listOfDoneExamples);
+                main.getEquationPattern().saveExamples(listOfDoneExamples);
                 System.exit(0);
             } else {
                 System.out.println(WRONG_VALUE);
+                tempAskForQuitCommand = scanner.next();
+
             }
         }
     }

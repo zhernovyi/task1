@@ -8,8 +8,8 @@ import java.util.List;
 
 public class ExitBeforeStartedExample implements EquationPattern{
     private final static String PATH_TO_SAVE_FILE = "/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/files/results.txt";
-    private final static String MESSAGE = "Loser\n";
-    private final static String DATE_TIME_FORMAT = "yyyy/MM/dd HH:mm:ss";
+    private final static String MESSAGE = "Loser";
+    private final static String DATE_TIME_FORMAT = "\nyyyy/MM/dd HH:mm:ss";
 
 
     @Override

@@ -5,13 +5,13 @@ import main.PositiveNegativeCounters;
 import java.util.List;
 
 public class ExamplesFromRandomGenerationImpl extends PositiveNegativeCounters implements EquationPattern {
-    int sizeArray = 5;
-    int sizeItemsOfArray = 3;
+    private final static int SIZE_ARRAY = 5;
+    private final static int SIZE_ITEMS_OF_ARRAY = 3;
 
     @Override
     public Integer[][] generationExamples() {
-        Integer[][] listOfExamples = new Integer[sizeArray][sizeItemsOfArray];
-        for (int temporaryArrayCounter = 0; temporaryArrayCounter < sizeArray; temporaryArrayCounter++) {
+        Integer[][] listOfExamples = new Integer[SIZE_ARRAY][SIZE_ITEMS_OF_ARRAY];
+        for (int temporaryArrayCounter = 0; temporaryArrayCounter < SIZE_ARRAY; temporaryArrayCounter++) {
             int num1 = getNum();
             int num2 = getNum();
             int rightResult = num1 * num2;
@@ -31,7 +31,7 @@ public class ExamplesFromRandomGenerationImpl extends PositiveNegativeCounters i
         for (String s : array) {
             System.out.print(s);
         }
-        System.out.println("\nYour result: " + (char) 27 + "[36m" + getPositiveCounter() + "/" + (char) 27 + "[31m" + getNegativeCounter());
-
+        String format = "\nYour result: \u001B[36m%d\u001B[30m/\u001B[31m%d\u001B[0m";
+        System.out.println(String.format(format, getPositiveCounter(), getNegativeCounter()));
     }
 }

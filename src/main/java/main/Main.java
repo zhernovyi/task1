@@ -6,20 +6,21 @@ import generationExamples.EquationPattern;
 import java.util.List;
 
 public class Main {
-    private static BasicAction basicAction = null;
-    protected static EquationPattern equationPattern = null;
+    private static EquationPattern equationPattern;//STATIC - because it has an important data, that should be saved for whole runtime of app
+
+    public EquationPattern getEquationPattern() {
+        return equationPattern;
+    }
 
     public static void main(String[] args) {
-        Integer[][] listOfGenExamples = null;
+        AskingForMode askingForMode = new AskingForMode();
+        Main.equationPattern = askingForMode.askingForMode();
+        BasicAction basicAction = askingForMode.askingForAction();
 
         while (true) {
-            if (AskingForMode.varKeyOfStart == true) {
-                equationPattern = AskingForMode.askingForMode();
-                basicAction = AskingForMode.askingForAction();
-                listOfGenExamples = equationPattern.generationExamples();
-            }
+            Integer[][] listOfGenExamples = Main.equationPattern.generationExamples();
             List<String> listOfDoneExamples = basicAction.doingAction(listOfGenExamples);
-            listOfGenExamples = AskingForMode.askForQuit(listOfDoneExamples);
+            listOfGenExamples = askingForMode.askForQuit(listOfDoneExamples);
         }
     }
 }

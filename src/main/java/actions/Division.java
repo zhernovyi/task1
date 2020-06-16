@@ -41,25 +41,31 @@ public class Division extends PositiveNegativeCounters implements BasicAction {
 
     @Override
     public String formatEquation(int num1, int num2, int rightResult, int yourResult) {
+        String format;
         if (yourResult == rightResult) {
-            return "\n" + num1 + " / " + num2 + " = " + rightResult;
+            format = "\n%d / %d = %d";
+            return String.format(format, num1, num2, rightResult);
         } else {
-            return "\n" + num1 + " / " + num2 + " = " + rightResult + " (" + yourResult + ")";
+            format = "\n%d / %d = %d (%d)";
+            return String.format(format, num1, num2, rightResult, yourResult);
         }
     }
 
     @Override
     public void printWrongResult(int rightResult) {
-        System.out.println((char) 27 + "[31mWrong" + (char) 27 + "[32m (" + rightResult + ")");
+        String format = "\u001B[31mWrong\u001B[36m(%d)\u001B[0m";
+        System.out.println(String.format(format, rightResult));
     }
 
     @Override
     public void printRightResult() {
-        System.out.println((char) 27 + "[32mRight");
+        String format = "\u001B[36mRight\u001B[0m";
+        System.out.println(format);
     }
 
     @Override
     public void printActionWithNumbers(int num1, int num2) {
-        System.out.println(num1 + " / " + num2 + " = ");
+        String format = "%d / %d = ";
+        System.out.print(String.format(format, num1, num2));
     }
 }

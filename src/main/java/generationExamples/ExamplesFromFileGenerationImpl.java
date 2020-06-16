@@ -9,15 +9,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ExamplesFromFileGenerationImpl implements EquationPattern {
-    BufferedReader reader;
     private final static String PATH_TO_OPEN_FILE = "/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/files/equations.txt";
     private final static String PATH_TO_SAVE_FILE = "/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/files/results.txt";
     private final static String SPLITTER = " ";
-    private final static String DATE_TIME_FORMAT = "yyyy/MM/dd HH:mm:ss";
+    private final static String DATE_TIME_FORMAT = "\nyyyy/MM/dd HH:mm:ss";
 
 
     @Override
     public Integer[][] generationExamples() {
+        BufferedReader reader;
         int counterExamples = 0;
         try {
             reader = new BufferedReader(new FileReader(PATH_TO_OPEN_FILE));
@@ -63,7 +63,6 @@ public class ExamplesFromFileGenerationImpl implements EquationPattern {
     public void saveExamples(List<String> listOfArrays) {
         try (FileWriter fileWriter = new FileWriter(PATH_TO_SAVE_FILE, false)) {
             fileWriter.write(String.valueOf(listOfArrays));
-            fileWriter.write('\n');
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT);
             LocalDateTime now = LocalDateTime.now();
             fileWriter.write(dtf.format(now));
@@ -71,11 +70,4 @@ public class ExamplesFromFileGenerationImpl implements EquationPattern {
             System.out.println(e.getMessage());
         }
     }
-//    public String newArr(List<String> array) {
-//        String newArrCollection = "";
-//        for (String s : array) {
-//            newArrCollection += s;
-//        }
-//        return newArrCollection;
-//    }
 }
