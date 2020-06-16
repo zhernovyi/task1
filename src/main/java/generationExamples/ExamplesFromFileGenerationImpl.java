@@ -10,15 +10,17 @@ import java.util.List;
 
 public class ExamplesFromFileGenerationImpl implements EquationPattern {
     BufferedReader reader;
-    String pathToOpenFile = "/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/files/equations.txt";
-    String pathToSaveFile = "/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/files/results.txt";
+    private final static String PATH_TO_OPEN_FILE = "/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/files/equations.txt";
+    private final static String PATH_TO_SAVE_FILE = "/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/files/results.txt";
+    private final static String SPLITTER = " ";
+    private final static String DATE_TIME_FORMAT = "yyyy/MM/dd HH:mm:ss";
 
 
     @Override
     public Integer[][] generationExamples() {
         int counterExamples = 0;
         try {
-            reader = new BufferedReader(new FileReader(pathToOpenFile));
+            reader = new BufferedReader(new FileReader(PATH_TO_OPEN_FILE));
             int countOfStrings = 0;
             {
                 BufferedReader readerTemp;
@@ -30,14 +32,14 @@ public class ExamplesFromFileGenerationImpl implements EquationPattern {
                 }
             }
 
-            reader = new BufferedReader(new FileReader(pathToOpenFile));
+            reader = new BufferedReader(new FileReader(PATH_TO_OPEN_FILE));
             String line = reader.readLine();
-            String[] tempArrayString = line.split(" ");
+            String[] tempArrayString = line.split(SPLITTER);
             Integer[][] arrayInteger = new Integer[countOfStrings][tempArrayString.length];
 
             while (line != null) {
 
-                String[] arrayString = line.split(" ");
+                String[] arrayString = line.split(SPLITTER);
                 for (int j = 0; j < arrayString.length; j++) {
                     arrayInteger[counterExamples][j] = Integer.parseInt(arrayString[j]);
                 }
@@ -59,21 +61,21 @@ public class ExamplesFromFileGenerationImpl implements EquationPattern {
 
     @Override
     public void saveExamples(List<String> listOfArrays) {
-        try (FileWriter fileWriter = new FileWriter(pathToSaveFile, false)) {
+        try (FileWriter fileWriter = new FileWriter(PATH_TO_SAVE_FILE, false)) {
             fileWriter.write(String.valueOf(listOfArrays));
             fileWriter.write('\n');
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT);
             LocalDateTime now = LocalDateTime.now();
             fileWriter.write(dtf.format(now));
-            fileWriter.write("\n---------------------\n");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-    }    public String newArr(List<String> array) {
-        String newArrCollection = "";
-        for (String s : array) {
-            newArrCollection += s;
-        }
-        return newArrCollection;
     }
+//    public String newArr(List<String> array) {
+//        String newArrCollection = "";
+//        for (String s : array) {
+//            newArrCollection += s;
+//        }
+//        return newArrCollection;
+//    }
 }

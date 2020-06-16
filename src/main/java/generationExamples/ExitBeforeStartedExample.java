@@ -7,8 +7,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ExitBeforeStartedExample implements EquationPattern{
-    String pathToSaveFile = "/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/files/results.txt";
-    String message = "Loser";
+    private final static String PATH_TO_SAVE_FILE = "/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/files/results.txt";
+    private final static String MESSAGE = "Loser\n";
+    private final static String DATE_TIME_FORMAT = "yyyy/MM/dd HH:mm:ss";
+
 
     @Override
     public Integer[][] generationExamples() {
@@ -17,14 +19,12 @@ public class ExitBeforeStartedExample implements EquationPattern{
 
     @Override
     public void saveExamples(List<String> listOfArrays) {
-        try (FileWriter fileWriter = new FileWriter(pathToSaveFile, false)) {
-            System.out.println(message);
-            fileWriter.write(message);
-            fileWriter.write('\n');
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        try (FileWriter fileWriter = new FileWriter(PATH_TO_SAVE_FILE, false)) {
+            System.out.println(MESSAGE);
+            fileWriter.write(MESSAGE);
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT);
             LocalDateTime now = LocalDateTime.now();
             fileWriter.write(dtf.format(now));
-            fileWriter.write("\n---------------------\n");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
