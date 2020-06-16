@@ -1,27 +1,29 @@
 package main;
 
+import actions.BasicAction;
+import actions.Multiplication;
 import generationExamples.EquationPattern;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main extends PositiveNegativeCounters {
-    public static boolean varKeyOfStart = true; //this variable can help understand the system, where the program is started
+//    private static AskingForMode askingForMode = new AskingForMode();
+//    private static AskingForMode ask = new AskingForMode();
+    private static BasicAction basicAction = null;
     protected static EquationPattern equationPattern = null;
-    public static Integer[][] listOfGenExamples;
-    List<String> listOfArrays = new ArrayList<>();
+
 
     public static void main(String[] args) {
-        Multiplication mult = new Multiplication();
-        AskingForMode ask = new AskingForMode();
+        Integer[][] listOfGenExamples=null;
 
         while (true) {
-            if (varKeyOfStart == true) {
-                equationPattern = ask.askingForMode();
+            if (AskingForMode.varKeyOfStart == true) {
+                equationPattern = AskingForMode.askingForMode();
+                basicAction = AskingForMode.askingForAction();
                 listOfGenExamples = equationPattern.generationExamples();
             }
-            List<String> listOfDoneExamples = mult.doingMultExamples(Main.listOfGenExamples);
-            listOfGenExamples = ask.askForQuit(listOfDoneExamples);
+            List<String> listOfDoneExamples = basicAction.doingAction(listOfGenExamples);
+            listOfGenExamples = AskingForMode.askForQuit(listOfDoneExamples);
         }
     }
 }
