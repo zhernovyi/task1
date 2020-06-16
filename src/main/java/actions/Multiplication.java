@@ -1,12 +1,12 @@
 package actions;
 
-import main.Main;
+import main.PositiveNegativeCounters;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Multiplication extends Main implements BasicAction {
+public class Multiplication extends PositiveNegativeCounters  implements BasicAction {
     List<String> listOfArrays = new ArrayList<>();
 
     @Override
@@ -22,7 +22,7 @@ public class Multiplication extends Main implements BasicAction {
                 System.out.print(num1 + " * " + num2 + " = ");
 
                 int yourResult = Integer.parseInt((new Scanner(System.in).next()));
-                String doneExample = formatEquatione(num1, num2, rightResult, yourResult);
+                String doneExample = formatEquation(num1, num2, rightResult, yourResult);
                 listOfArrays.add(doneExample);
 
                 if (yourResult == rightResult) {
@@ -41,7 +41,7 @@ public class Multiplication extends Main implements BasicAction {
     }
 
     @Override
-    public String formatEquatione(int num1, int num2, int rightResult, int yourResult) {
+    public String formatEquation(int num1, int num2, int rightResult, int yourResult) {
         if (yourResult == rightResult) {
             return "\n" + num1 + " * " + num2 + " = " + rightResult;
         } else {

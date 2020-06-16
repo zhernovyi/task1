@@ -1,20 +1,16 @@
 package main;
 
 import actions.BasicAction;
-import actions.Multiplication;
 import generationExamples.EquationPattern;
 
 import java.util.List;
 
-public class Main extends PositiveNegativeCounters {
-//    private static AskingForMode askingForMode = new AskingForMode();
-//    private static AskingForMode ask = new AskingForMode();
+public class Main {
     private static BasicAction basicAction = null;
     protected static EquationPattern equationPattern = null;
 
-
     public static void main(String[] args) {
-        Integer[][] listOfGenExamples=null;
+        Integer[][] listOfGenExamples = null;
 
         while (true) {
             if (AskingForMode.varKeyOfStart == true) {

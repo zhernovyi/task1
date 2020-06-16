@@ -1,14 +1,15 @@
 package generationExamples;
 
-import java.util.List;
-import main.Main;
+import main.PositiveNegativeCounters;
 
-public class ExamplesFromRandomGenerationImpl implements EquationPattern {
+import java.util.List;
+
+public class ExamplesFromRandomGenerationImpl extends PositiveNegativeCounters implements EquationPattern {
     int sizeArray = 5;
     int sizeItemsOfArray = 3;
 
     @Override
-    public Integer[][] generationExamples(/*Integer[][] listOfExamples*/) {
+    public Integer[][] generationExamples() {
         Integer[][] listOfExamples = new Integer[sizeArray][sizeItemsOfArray];
         for (int temporaryArrayCounter = 0; temporaryArrayCounter < sizeArray; temporaryArrayCounter++) {
             int num1 = getNum();
@@ -30,7 +31,7 @@ public class ExamplesFromRandomGenerationImpl implements EquationPattern {
         for (String s : array) {
             System.out.print(s);
         }
-        System.out.println("\nYour result: " + (char) 27 + "[36m" + Main.getPositiveCounter() + "/" + (char) 27 + "[31m" + Main.getNegativeCounter());
+        System.out.println("\nYour result: " + (char) 27 + "[36m" + getPositiveCounter() + "/" + (char) 27 + "[31m" + getNegativeCounter());
 
     }
 }
