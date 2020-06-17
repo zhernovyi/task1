@@ -1,5 +1,8 @@
 package generationExamples;
 
+import main.Configurations;
+import main.Main;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -9,18 +12,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ExamplesFromFileGenerationImpl implements EquationPattern {
-    private final static String PATH_TO_OPEN_FILE = "/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/files/equations.txt";
-    private final static String PATH_TO_SAVE_FILE = "/Users/vladislavzhernovii/IdeaProjects/task1/src/main/java/files/results.txt";
     private final static String SPLITTER = " ";
-    private final static String DATE_TIME_FORMAT = "\nyyyy/MM/dd HH:mm:ss";
-
 
     @Override
     public Integer[][] generationExamples() {
         BufferedReader reader;
         int counterExamples = 0;
         try {
-            reader = new BufferedReader(new FileReader(PATH_TO_OPEN_FILE));
+            reader = new BufferedReader(new FileReader(Configurations.getPathToOpenFile()));
             int countOfStrings = 0;
             {
                 BufferedReader readerTemp;
@@ -32,7 +31,7 @@ public class ExamplesFromFileGenerationImpl implements EquationPattern {
                 }
             }
 
-            reader = new BufferedReader(new FileReader(PATH_TO_OPEN_FILE));
+            reader = new BufferedReader(new FileReader(Configurations.getPathToOpenFile()));
             String line = reader.readLine();
             String[] tempArrayString = line.split(SPLITTER);
             Integer[][] arrayInteger = new Integer[countOfStrings][tempArrayString.length];
@@ -61,9 +60,9 @@ public class ExamplesFromFileGenerationImpl implements EquationPattern {
 
     @Override
     public void saveExamples(List<String> listOfArrays) {
-        try (FileWriter fileWriter = new FileWriter(PATH_TO_SAVE_FILE, false)) {
+        try (FileWriter fileWriter = new FileWriter(Configurations.getPathToSaveFile(), false)) {
             fileWriter.write(String.valueOf(listOfArrays));
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT);
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern(Configurations.getDateFormat());
             LocalDateTime now = LocalDateTime.now();
             fileWriter.write(dtf.format(now));
         } catch (IOException e) {

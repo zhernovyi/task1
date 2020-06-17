@@ -12,7 +12,8 @@ public class Main {
         return equationPattern;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        Configurations conf = new Configurations();
         AskingForMode askingForMode = new AskingForMode();
         Main.equationPattern = askingForMode.askingForMode();
         BasicAction basicAction = askingForMode.askingForAction();

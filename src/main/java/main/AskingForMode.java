@@ -47,7 +47,7 @@ public class AskingForMode {
         }
     }
 
-    protected BasicAction askingForAction() {
+    protected BasicAction askingForAction() throws Exception {
         if (getChooseModeByUser().equals(ZERO_POSITION)) {
             return new ExitBeforeChoosingAction();
         } else {
@@ -67,7 +67,7 @@ public class AskingForMode {
         }
     }
 
-    protected Integer[][] askForQuit(List<String> listOfDoneExamples) {
+    protected Integer[][] askForQuit(List<String> listOfDoneExamples) throws Exception {
         Scanner scanner = new Scanner(System.in);
         String tempAskForQuitCommand = "";
         if (listOfDoneExamples != null) {
@@ -87,7 +87,6 @@ public class AskingForMode {
             } else {
                 System.out.println(WRONG_VALUE);
                 tempAskForQuitCommand = scanner.next();
-
             }
         }
     }
