@@ -1,0 +1,34 @@
+1)
+    1. Choose a random mode (1)
+    2. do 3 right examples and 2 wrong ones
+    3. chose NO (don't continue)
+
+    Expected result:
+    There should be printed result into console
+    There isn't updated 'results.txt' file
+
+2)
+    1. Choose a random mode (1)
+    2. do 3 right examples and 2 wrong ones
+    3. chose YES (continue)
+    4. do 3 right examples and 2 wrong ones
+    5. chose NO (don't continue)
+
+    Expected result:
+    There should be printed result into console
+    There isn't updated 'results.txt' file
+
+3)
+    1. Choose a fromFile mode (2)
+    2. do 3 right examples and 2 wrong ones
+    3. chose NO (don't continue)
+
+    Expected result:
+    There shouldn't be printed result into console
+    There should be updated 'results.txt' file
+
+4)
+    1. Choose a don't play mode (0)
+
+    Expected result:
+    There should be printed word into console and saved in a file
