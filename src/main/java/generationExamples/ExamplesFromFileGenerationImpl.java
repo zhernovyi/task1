@@ -22,12 +22,12 @@ public class ExamplesFromFileGenerationImpl implements EquationPattern {
             reader = new BufferedReader(new FileReader(Configurations.getPathToOpenFile()));
             int countOfStrings = 0;
             {
-                BufferedReader readerTemp;
-                readerTemp = reader;
-                String lineTemp = readerTemp.readLine();
+//                BufferedReader readerTemp;
+//                readerTemp = reader;
+                String lineTemp = reader.readLine();
                 while (lineTemp != null) {
                     countOfStrings++;
-                    lineTemp = readerTemp.readLine();
+                    lineTemp = reader.readLine();
                 }
             }
 

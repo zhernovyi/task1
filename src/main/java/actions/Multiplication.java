@@ -9,8 +9,8 @@ import java.util.Scanner;
 public class Multiplication extends PositiveNegativeCounters implements BasicAction {
     List<String> listOfArrays = new ArrayList<>();
     private final static String EXAMPLE_MULT = "%d * %d = ";
-    private final static String RIGHT_RESULT_MULT = "%d * %d = %d \n";
-    private final static String WRONG_RESULT_MULT = "%d * %d = %d (%d)\n";
+    private final static String RIGHT_RESULT_MULT = "\n%d * %d = %d";
+    private final static String WRONG_RESULT_MULT = "\n%d * %d = %d (%d)";
 
     @Override
     public List<String> doingAction(List<Integer[]> listOfExamples) {
