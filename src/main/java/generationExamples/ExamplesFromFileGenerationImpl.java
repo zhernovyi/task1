@@ -1,7 +1,6 @@
 package generationExamples;
 
 import main.Configurations;
-import main.Main;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,13 +8,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExamplesFromFileGenerationImpl implements EquationPattern {
-    private final static String SPLITTER = " ";
+    private final static String NUMBERS_SPLITTER_IN_STRING = " ";
 
     @Override
-    public Integer[][] generationExamples() {
+    public List<Integer[]> generationExamples() {
         BufferedReader reader;
         int counterExamples = 0;
         try {
@@ -33,21 +33,22 @@ public class ExamplesFromFileGenerationImpl implements EquationPattern {
 
             reader = new BufferedReader(new FileReader(Configurations.getPathToOpenFile()));
             String line = reader.readLine();
-            String[] tempArrayString = line.split(SPLITTER);
-            Integer[][] arrayInteger = new Integer[countOfStrings][tempArrayString.length];
+            String[] tempArrayString = line.split(NUMBERS_SPLITTER_IN_STRING);
+            List<Integer[]> listOfExamples = new ArrayList<>();
 
             while (line != null) {
-
-                String[] arrayString = line.split(SPLITTER);
-                for (int j = 0; j < arrayString.length; j++) {
-                    arrayInteger[counterExamples][j] = Integer.parseInt(arrayString[j]);
+                String[] arrayExampleString = line.split(NUMBERS_SPLITTER_IN_STRING);
+                Integer[] arrExampleInt = new Integer[tempArrayString.length];
+                for (int j = 0; j < arrayExampleString.length; j++) {
+                    arrExampleInt[j] = Integer.parseInt(arrayExampleString[j]);
                 }
+                listOfExamples.add(arrExampleInt);
                 line = reader.readLine();
                 counterExamples++;
                 if (counterExamples != countOfStrings) {
 
                 } else {
-                    return arrayInteger;
+                    return listOfExamples;
                 }
             }
         } catch (IOException e) {

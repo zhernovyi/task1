@@ -1,7 +1,9 @@
 package generationExamples;
 
+import main.Configurations;
 import main.PositiveNegativeCounters;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExamplesFromRandomGenerationImpl extends PositiveNegativeCounters implements EquationPattern {
@@ -9,15 +11,18 @@ public class ExamplesFromRandomGenerationImpl extends PositiveNegativeCounters i
     private final static int SIZE_ITEMS_OF_ARRAY = 3;
 
     @Override
-    public Integer[][] generationExamples() {
-        Integer[][] listOfExamples = new Integer[SIZE_ARRAY][SIZE_ITEMS_OF_ARRAY];
+    public List<Integer[]> generationExamples() {
+        List<Integer[]> listOfExamples = new ArrayList<>();
         for (int temporaryArrayCounter = 0; temporaryArrayCounter < SIZE_ARRAY; temporaryArrayCounter++) {
+            Integer[] arrExample = new Integer[SIZE_ITEMS_OF_ARRAY];
             int num1 = getNum();
             int num2 = getNum();
             int rightResult = num1 * num2;
-            listOfExamples[temporaryArrayCounter][0] = num1;
-            listOfExamples[temporaryArrayCounter][1] = num2;
-            listOfExamples[temporaryArrayCounter][2] = rightResult;
+            arrExample[0] = num1;
+            arrExample[1] = num2;
+            arrExample[2] = rightResult;
+
+            listOfExamples.add(arrExample);
         }
         return listOfExamples;
     }
@@ -31,7 +36,6 @@ public class ExamplesFromRandomGenerationImpl extends PositiveNegativeCounters i
         for (String s : array) {
             System.out.print(s);
         }
-        String format = "\nYour result: \u001B[36m%d\u001B[30m/\u001B[31m%d\u001B[0m";
-        System.out.println(String.format(format, getPositiveCounter(), getNegativeCounter()));
+        System.out.println(String.format(Configurations.getPrintCounters(), getPositiveCounter(), getNegativeCounter()));
     }
 }

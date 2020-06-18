@@ -7,7 +7,7 @@ import java.util.List;
 public class ExitBeforeChoosingAction extends Main implements BasicAction {
 
     @Override
-    public List<String> doingAction(Integer[][] listOfExamples) {
+    public List<String> doingAction(List<Integer []> listOfExamples) {
         return null;
     }
 
@@ -21,7 +21,7 @@ public class ExitBeforeChoosingAction extends Main implements BasicAction {
     }
 
     @Override
-    public void printRightResult() {
+    public void printCorrectResult() {
     }
 
     @Override

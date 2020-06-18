@@ -19,7 +19,7 @@ public class Main {
         BasicAction basicAction = askingForMode.askingForAction();
 
         while (true) {
-            Integer[][] listOfGenExamples = Main.equationPattern.generationExamples();
+            List<Integer[]> listOfGenExamples = Main.equationPattern.generationExamples();
             List<String> listOfDoneExamples = basicAction.doingAction(listOfGenExamples);
             listOfGenExamples = askingForMode.askForQuit(listOfDoneExamples);
         }

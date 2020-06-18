@@ -67,7 +67,7 @@ public class AskingForMode {
         }
     }
 
-    protected Integer[][] askForQuit(List<String> listOfDoneExamples) throws Exception {
+    protected List<Integer[]> askForQuit(List<String> listOfDoneExamples) throws Exception {
         Scanner scanner = new Scanner(System.in);
         String tempAskForQuitCommand = "";
         if (listOfDoneExamples != null) {
